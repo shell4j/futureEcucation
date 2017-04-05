@@ -1,5 +1,6 @@
 package cn.edu.bnu;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,27 +16,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @EnableAutoConfiguration
 public class searchController {
 	@RequestMapping(value = {"/","/index"})
-	public String index(String keyword,ModelMap map){
-		//map.addAttribute("name","12345");
+	public String index(){
 		return "index";
 	}
 	@RequestMapping(value = "/search")
-	public String  processForm(@RequestParam("q") String query,@RequestParam("q") String book,@RequestParam("q") String course,@RequestParam("q") String knowledge,RedirectAttributes ra) {
-		//分词等操作
+	public String  processForm(@RequestParam("q") String query,
+			@RequestParam("b") String book,
+			RedirectAttributes ra) {
 		System.out.println(query);
 		System.out.println(book);
-		System.out.println(course);
-		System.out.println(knowledge);
 		ra.addAttribute("q",query);
+		ra.addAttribute("b",book);
 		return "redirect:/result";
 	}
 	@RequestMapping(value = "/result")
 	@ResponseBody
-	public ModelAndView  result(@RequestParam("q") String query,ModelMap mp) {
+	public ModelAndView  result(@RequestParam("q") String query,
+			@RequestParam("b") String book,ModelMap mp) {
 		//分词等操作
 		mp.addAttribute("query", query);
-		System.out.println(query);
-		ModelAndView mv=new ModelAndView("result",mp);
+		mp.addAttribute("book", book);
+		System.out.println(query+"\t"+book);
+		ModelAndView mv=new ModelAndView("search",mp);
 		return mv;
 	}
 	

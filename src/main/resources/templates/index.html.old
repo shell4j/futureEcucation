@@ -141,34 +141,35 @@
 		<div id="banner" class="banner">
 			<div class="banner-image"></div>
 			<div class="banner-caption">
+			
 				<div class="container">
-				 <form  th:action="@{/search}">
-					<div class="form-group">
-						<div class="col-md-6 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">							 	
+				<form class="form-inline" th:action="@{/search}" method="post">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">							 	
                                 <div class="input-group">                   
                                      <span class="input-group-btn">
-                                     <input type="text" class="form-control" placeholder="知识图谱" name="q" th:value="${q}" />
-                                    
+                                     <input type="text" class="form-control" placeholder="Search for..." th:value="${q}" />
+                                     <button class="btn btn-default" type="submit" style="background:transparent">search</button>
                                      </span>                                    
                                  </div><!-- /input-group -->
                             </div><!-- /.col-lg-6 -->
-                    <!--    </div>
-                    <div class="form-group">-->
+                        </div>
+                    <div class="row">
 						<div class="col-md-8 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">             
                               <label class="radio-inline">
-                               <input type="radio" name="b" id="b" th:value="book"  checked="checked" /> 教材
+                               <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="book" th:value="${b}"/> 教材
                               </label>
                               <label class="radio-inline">
-                               <input type="radio" name="b" id="b" th:value="course"/> 课程
+                               <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="course" th:value="${c}"/> 课程
                               </label>
                               <label class="radio-inline">
-                               <input type="radio" name="b" id="b" th:value="knowledge"/>知识点
+                               <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="knowledgePoint" th:value="${k}"/>知识点
                               </label>                          
 						</div>
 					</div>
-				   <button class="btn btn-default" type="submit" style="background:transparent">search</button>
-				  </form>
+				 </form>
 				</div>
+			
 			</div>
 		</div>
 		<!-- banner end -->
