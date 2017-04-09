@@ -37,7 +37,7 @@ public class searchController {
 		mp.addAttribute("query", query);
 		mp.addAttribute("book", book);
 		System.out.println(query+"\t"+book);
-		ModelAndView mv=new ModelAndView("search",mp);
+		ModelAndView mv=new ModelAndView("result",mp);
 		return mv;
 	}
 	
